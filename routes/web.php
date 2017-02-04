@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as'   => 'default.index',
+    'uses' => 'DefaultController@index',
+]);
