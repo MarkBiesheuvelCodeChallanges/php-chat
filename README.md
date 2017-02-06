@@ -30,6 +30,16 @@ To install all dependencies
 composer install
 ```
 
+To create a dotenv file (change database settings to local database)
+```bash
+cp .env.example .env
+```
+
+Perform database migration
+```bash
+php artisan migrate
+```
+
 To run the server
 ```bash
 php artisan serve
@@ -41,12 +51,12 @@ http --session=chat GET localhost:8000/api/users
 
 To send a message to another user 
 ```bash
-http --session=chat POST localhost:8000/api/users/39860/messages/ content="Hello user #39860"
+http --session=chat POST localhost:8000/api/users/39860/messages content="Hello user #39860"
 ```
 
 To receive all messages send to you by another user *(needs httpie)*
 ```bash
-http --session=chat GET localhost:8000/api/users
+http --session=chat GET localhost:8000/api/messages
 ```
 
 Hint: you can start mimick multiple users by chaging the session parameter of httpie
