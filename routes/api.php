@@ -13,12 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
+// Get list of all the users
 Route::get('/users', [
     'as'   => 'user.index',
     'uses' => 'UserController@index',
 ]);
 
-Route::get('/users/{user_id}/messages', [
-    'as'   => 'user.index',
-    'uses' => 'MessageController@index',
+// Receive all messages
+Route::get('/messages', [
+    'as'   => 'messages.receive',
+    'uses' => 'MessageController@receive',
+]);
+
+// Send message to a user
+Route::post('/users/{userId}/messages', [
+    'as'   => 'messages.send',
+    'uses' => 'MessageController@send',
 ]);
