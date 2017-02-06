@@ -34,16 +34,13 @@ class UserSession
             $session->put('userId', $id);
         }
 
-        // Make sure to indicate the current user is online
+        // Update user
         $user->last_request = time();
+        $user->save();
 
         //Add user to request and continue on
         $request->user = $user;
-        $response = $next($request);
 
-        // Only update user after everything is done
-        $user->save();
-
-        return $response;
+        return $next($request);
     }
 }
